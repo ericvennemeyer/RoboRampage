@@ -5,6 +5,7 @@ extends Node3D
 @export var recoil: float = .05
 @export var weapon_mesh: Node3D
 @export var weapon_damage: int = 15
+@export var muzzle_flash: GPUParticles3D
 
 @onready var cooldown_timer: Timer = $CooldownTimer
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
@@ -24,6 +25,7 @@ func _process(delta: float) -> void:
 
 func shoot() -> void:
 	cooldown_timer.start(1.0 / fire_rate)
+	muzzle_flash.restart()
 	weapon_mesh.position.z += recoil
 	var collider = ray_cast_3d.get_collider()
 	printt("Weapon Fired!", collider)
