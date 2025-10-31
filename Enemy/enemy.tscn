@@ -133,3 +133,4 @@ mesh = SubResource("BoxMesh_2pb1h")
 libraries = {
 &"": SubResource("AnimationLibrary_am0pq")
 }
+autoplay = "RESET"
