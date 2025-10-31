@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://d1ao36myh77qq"]
+[gd_scene load_steps=9 format=3 uid="uid://d1ao36myh77qq"]
 
 [ext_resource type="PackedScene" uid="uid://f22au7be1on2" path="res://Player/player.tscn" id="1_7t7j1"]
 [ext_resource type="Material" uid="uid://b52ebr2rphali" path="res://Levels/Materials/GrayMaterial.tres" id="1_fmlkh"]
-[ext_resource type="Script" uid="uid://ocrdiea6xgou" path="res://Levels/crosshair.gd" id="2_fukds"]
 [ext_resource type="Material" uid="uid://pfrsgew3jh87" path="res://Levels/Materials/OrangeMaterial.tres" id="4_um60u"]
 [ext_resource type="PackedScene" uid="uid://dultsxxakxmre" path="res://Enemy/enemy.tscn" id="5_um60u"]
 
@@ -34,17 +33,6 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_7t7j1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, 15)
-
-[node name="CenterContainer" type="CenterContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Crosshair" type="Control" parent="CenterContainer"]
-layout_mode = 2
-script = ExtResource("2_fukds")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_fmlkh")
