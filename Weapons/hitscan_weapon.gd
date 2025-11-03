@@ -7,6 +7,7 @@ extends Node3D
 @export var weapon_damage: int = 15
 @export var muzzle_flash: GPUParticles3D
 @export var sparks: PackedScene
+@export var is_automatic: bool = false
 
 @onready var cooldown_timer: Timer = $CooldownTimer
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
@@ -18,9 +19,14 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("Fire"):
-		if cooldown_timer.is_stopped():
-			shoot()
+	if is_automatic:
+		if Input.is_action_pressed("Fire"):
+			if cooldown_timer.is_stopped():
+				shoot()
+	else:
+		if Input.is_action_just_pressed("Fire"):
+			if cooldown_timer.is_stopped():
+				shoot()
 	weapon_mesh.position = weapon_mesh.position.lerp(weapon_start_position, delta * 10.0)
 
 

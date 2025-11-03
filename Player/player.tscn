@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://f4qga21ey647" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="Script" uid="uid://6obxm53fjk5r" path="res://Player/smooth_camera.gd" id="2_4ntmi"]
-[ext_resource type="PackedScene" uid="uid://b6pdatn6a250g" path="res://Weapons/SMG.tscn" id="3_btcbx"]
+[ext_resource type="PackedScene" uid="uid://tguwx1vs6urv" path="res://Weapons/Rifle.tscn" id="3_fhl08"]
 [ext_resource type="Script" uid="uid://ocrdiea6xgou" path="res://Levels/crosshair.gd" id="4_gwnis"]
 [ext_resource type="Texture2D" uid="uid://cmtmfwb6m25d0" path="res://Player/damage.png" id="5_k53q1"]
 [ext_resource type="PackedScene" uid="uid://dkuxinwnlda42" path="res://Player/game_over_menu.tscn" id="6_fhl08"]
@@ -91,10 +91,10 @@ top_level = true
 cull_mask = 1048573
 script = ExtResource("2_4ntmi")
 
-[node name="SMG" parent="CameraPivot/SmoothCamera" instance=ExtResource("3_btcbx")]
-
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="CameraPivot/SmoothCamera"]
 remote_path = NodePath("../../../SubViewportContainer/SubViewport/WeaponCamera")
+
+[node name="Rifle" parent="CameraPivot/SmoothCamera" instance=ExtResource("3_fhl08")]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 anchors_preset = 15

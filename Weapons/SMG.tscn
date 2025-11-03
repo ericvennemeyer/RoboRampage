@@ -31,6 +31,7 @@ size = Vector3(0.1, 0.1, 0.1)
 weapon_mesh = NodePath("SMG")
 muzzle_flash = NodePath("MuzzleFlash")
 sparks = ExtResource("2_i2xpi")
+is_automatic = true
 
 [node name="SMG" parent="." index="1" instance=ExtResource("2_ops1r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, -0.35, -1.8)
