@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://jt3pqi3ls5g"]
+
+[ext_resource type="Material" uid="uid://b52ebr2rphali" path="res://Levels/Materials/GrayMaterial.tres" id="1_8xii8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8xii8"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_k0okc"]
+sky_material = SubResource("ProceduralSkyMaterial_8xii8")
+
+[sub_resource type="Environment" id="Environment_6x3q2"]
+background_mode = 2
+sky = SubResource("Sky_k0okc")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="MainLevel" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6x3q2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+
+[node name="Room" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+material_override = ExtResource("1_8xii8")
+flip_faces = true
+size = Vector3(8, 4, 8)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="Corridor" type="CSGBox3D" parent="Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+flip_faces = true
+size = Vector3(2, 2, 4)
+
+[node name="Corridor2" type="CSGBox3D" parent="Room/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 0, -12)
+flip_faces = true
+size = Vector3(2, 2, 4)
+
+[node name="Corridor3" type="CSGBox3D" parent="Room/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, -12)
+flip_faces = true
+size = Vector3(2, 2, 4)
+
+[node name="Room2" type="CSGBox3D" parent="Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -12)
+flip_faces = true
+size = Vector3(8, 4, 8)
+
+[node name="Room4" type="CSGBox3D" parent="Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, -12)
+flip_faces = true
+size = Vector3(8, 4, 8)
+
+[node name="Room3" type="CSGBox3D" parent="Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, -12)
+flip_faces = true
+size = Vector3(8, 4, 8)
