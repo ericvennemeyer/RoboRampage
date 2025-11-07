@@ -4,6 +4,8 @@ extends Node3D
 @export var weapon_1: Node3D
 @export var weapon_2: Node3D
 
+var current_weapon: Node3D
+
 
 func _ready() -> void:
 	equip(weapon_1)
@@ -29,6 +31,8 @@ func equip(active_weapon: Node3D) -> void:
 		else:
 			child.visible = false
 			child.set_process(false)
+	
+	current_weapon = active_weapon
 
 
 func change_weapon(index_modifier: int) -> void:

@@ -7,6 +7,7 @@ const SPEED = 5.0
 @export var jump_height: float = 1.0
 @export var fall_multiplier: float = 2.5
 @export var max_hitpoints: int = 100
+@export var aim_multiplier: float = 0.7
 
 var mouse_motion: Vector2 = Vector2.ZERO
 var hitpoints: int = max_hitpoints:
@@ -18,15 +19,49 @@ var hitpoints: int = max_hitpoints:
 		print(hitpoints)
 		if hitpoints <= 0:
 			game_over_menu.game_over()
+var weapon_zoom_speed: float = 20.0
+
 
 @onready var camera_pivot: Node3D = $CameraPivot
 @onready var damage_animation_player: AnimationPlayer = $DamageTexture/DamageAnimationPlayer
 @onready var game_over_menu: Control = $GameOverMenu
 @onready var ammo_handler: AmmoHandler = %AmmoHandler
+#@onready var weapon_handler: Node3D = %WeaponHandler
+@onready var smooth_camera: Camera3D = %SmoothCamera
+@onready var weapon_camera: Camera3D = %WeaponCamera
+
+@onready var smooth_camera_fov := smooth_camera.fov
+@onready var weapon_camera_fov := weapon_camera.fov
 
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+func _process(delta: float) -> void:
+	if Input.is_action_pressed("aim"):
+		smooth_camera.fov = lerp(
+			smooth_camera.fov, 
+			smooth_camera_fov * aim_multiplier, 
+			delta * weapon_zoom_speed
+			)
+		weapon_camera.fov = lerp(
+			weapon_camera.fov, 
+			weapon_camera_fov * aim_multiplier, 
+			delta * weapon_zoom_speed
+			)
+	else:
+		smooth_camera.fov = lerp(
+			smooth_camera.fov, 
+			smooth_camera_fov, 
+			delta * weapon_zoom_speed * 1.5
+			)
+		weapon_camera.fov = lerp(
+			weapon_camera.fov, 
+			weapon_camera_fov, 
+			delta * weapon_zoom_speed * 1.5
+			)
+
 
 func _physics_process(delta: float) -> void:
 	handle_camera_rotation()
@@ -48,6 +83,9 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
+		if Input.is_action_pressed("aim"):
+			velocity.x *= aim_multiplier
+			velocity.y *= aim_multiplier
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
@@ -60,6 +98,8 @@ func _input(event: InputEvent) -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		mouse_motion = -event.relative * 0.001
+		if Input.is_action_pressed("aim"):
+			mouse_motion *= aim_multiplier
 
 
 func handle_camera_rotation() -> void:

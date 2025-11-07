@@ -222,7 +222,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 1, -11)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9175, 0.183535, 7.37149)
 
 [node name="BulletPickup" parent="Pickups" instance=ExtResource("5_forfm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3)
 
 [node name="SmallBulletPickup" parent="Pickups" instance=ExtResource("6_o3scy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 1)
