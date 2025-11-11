@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="RoboRampage"
-run/main_scene="uid://d1ao36myh77qq"
+run/main_scene="uid://jt3pqi3ls5g"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
