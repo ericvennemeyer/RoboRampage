@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://jt3pqi3ls5g"]
+[gd_scene load_steps=6 format=3 uid="uid://jt3pqi3ls5g"]
 
 [ext_resource type="Material" uid="uid://b52ebr2rphali" path="res://Levels/Materials/GrayMaterial.tres" id="1_8xii8"]
+[ext_resource type="Texture2D" uid="uid://cj8t8uxfyaw33" path="res://Levels/level-floorplan.png" id="2_k0okc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8xii8"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -23,41 +24,119 @@ environment = SubResource("Environment_6x3q2")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 
+[node name="Overhang" type="CSGBox3D" parent="."]
+transform = Transform3D(1.05625, 0, 0, 0, 1, 0, 0, 0, 1.14779, -8.421, 1.5, 4.627)
+material_override = ExtResource("1_8xii8")
+size = Vector3(8.583, 3, 5)
+
+[node name="Overhang2" type="CSGBox3D" parent="Overhang"]
+transform = Transform3D(0.999994, 0, 0, 0, 0.999997, 0, 0, 0, 1, 0.947, 0.05, 2.24224)
+material_override = ExtResource("1_8xii8")
+operation = 2
+size = Vector3(8.583, 3.1, 6)
+
+[node name="Corridor6" type="CSGBox3D" parent="Overhang"]
+transform = Transform3D(0.946741, 0, 0, 0, 0.999996, 0, 0, 0, 0.871243, -2.3716, -0.25, -1.80739)
+material_override = ExtResource("1_8xii8")
+operation = 2
+size = Vector3(2, 2.5, 3)
+
+[node name="Overhang2" type="CSGBox3D" parent="."]
+transform = Transform3D(1.05625, 0, 0, 0, 1, 0, 0, 0, 1.14779, -10.113, 1.5, -1.799)
+material_override = ExtResource("1_8xii8")
+size = Vector3(6, 3, 4)
+
+[node name="Overhang3" type="CSGBox3D" parent="Overhang2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84024, 0, 0)
+material_override = ExtResource("1_8xii8")
+operation = 2
+size = Vector3(4, 3, 4)
+
+[node name="Overhang3" type="CSGBox3D" parent="."]
+transform = Transform3D(1.05625, 0, 0, 0, 1, 0, 0, 0, 1.14779, 0.415, 1.5, -3.225)
+material_override = ExtResource("1_8xii8")
+size = Vector3(11, 3, 7)
+
+[node name="Overhang4" type="CSGBox3D" parent="Overhang3"]
+transform = Transform3D(0.999978, 0, 0, 0, 0.999989, 0, 0, 0, 1, 0.0999998, 0, -0.550001)
+material_override = ExtResource("1_8xii8")
+operation = 2
+size = Vector3(8, 3.1, 4.9)
+
+[node name="Overhang4" type="CSGBox3D" parent="."]
+transform = Transform3D(1.05625, 0, 0, 0, 1, 0, 0, 0, 1.14779, 11.471, 1.5, -0.373)
+material_override = ExtResource("1_8xii8")
+size = Vector3(3, 3, 11)
+
+[node name="Overhang5" type="CSGBox3D" parent="Overhang4"]
+transform = Transform3D(0.999992, 0, 0, 0, 0.999996, 0, 0, 0, 1, 0, 0, 2.5)
+material_override = ExtResource("1_8xii8")
+operation = 2
+size = Vector3(3, 3.1, 6)
+
 [node name="Room" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78, 1.5, 5.83)
 material_override = ExtResource("1_8xii8")
 flip_faces = true
-size = Vector3(8, 4, 8)
+size = Vector3(5, 3, 4)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="Room"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="Corridor" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.053, 0.75, -0.2775)
+material_override = ExtResource("1_8xii8")
 flip_faces = true
-size = Vector3(2, 2, 4)
+size = Vector3(3.294, 2.5, 3)
 
 [node name="Corridor2" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 0, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.706, 0.75, -4.7775)
+material_override = ExtResource("1_8xii8")
 flip_faces = true
-size = Vector3(2, 2, 4)
+size = Vector3(2, 2.5, 2)
 
 [node name="Corridor3" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.053, 3.75, -7.778)
+material_override = ExtResource("1_8xii8")
 flip_faces = true
-size = Vector3(2, 2, 4)
+size = Vector3(3.294, 2.5, 2)
 
-[node name="Room2" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -12)
+[node name="Corridor5" type="CSGBox3D" parent="Room/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.053, 3.75, -3.778)
+material_override = ExtResource("1_8xii8")
 flip_faces = true
-size = Vector3(8, 4, 8)
+size = Vector3(3.294, 2.5, 2)
 
-[node name="Room4" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, -12)
+[node name="Corridor4" type="CSGBox3D" parent="Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8, 3.75, -9.778)
+material_override = ExtResource("1_8xii8")
 flip_faces = true
-size = Vector3(8, 4, 8)
+size = Vector3(5, 2.5, 2)
 
 [node name="Room3" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, -12)
+transform = Transform3D(1.05625, 0, 0, 0, 1, 0, 0, 0, 1.14779, -10.201, 2.5, -1.20309)
+material_override = ExtResource("1_8xii8")
 flip_faces = true
-size = Vector3(8, 4, 8)
+size = Vector3(8.583, 6, 5)
+
+[node name="Room4" type="CSGBox3D" parent="Room/CSGCombiner3D"]
+transform = Transform3D(1.05625, 0, 0, 0, 1, 0, 0, 0, 1.14779, -11.8931, 2.5, -7.62919)
+material_override = ExtResource("1_8xii8")
+flip_faces = true
+size = Vector3(6, 6, 4)
+
+[node name="Room5" type="CSGBox3D" parent="Room/CSGCombiner3D"]
+transform = Transform3D(1.05625, 0, 0, 0, 1, 0, 0, 0, 1.14779, -1.36498, 2.5, -9.0553)
+material_override = ExtResource("1_8xii8")
+flip_faces = true
+size = Vector3(11, 6, 7)
+
+[node name="Room6" type="CSGBox3D" parent="Room/CSGCombiner3D"]
+transform = Transform3D(1.05625, 0, 0, 0, 1, 0, 0, 0, 1.14779, 9.69127, 2.5, -6.20309)
+material_override = ExtResource("1_8xii8")
+flip_faces = true
+size = Vector3(3, 6, 11)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.1, 0)
+texture = ExtResource("2_k0okc")
