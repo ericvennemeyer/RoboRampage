@@ -3,7 +3,6 @@ extends CharacterBody3D
 
 
 const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
 
 @export var attack_range: float = 1.5
 @export var max_hitpoints: int = 100
