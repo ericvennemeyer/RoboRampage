@@ -40,8 +40,9 @@ func shoot() -> void:
 		weapon_mesh.position.z += recoil
 		var collider = ray_cast_3d.get_collider()
 		printt("Weapon Fired!", collider)
-		if collider is Enemy:
-			collider.hitpoints -= weapon_damage
-		var spark = sparks.instantiate()
-		add_child(spark)
-		spark.global_position = ray_cast_3d.get_collision_point()
+		if ray_cast_3d.is_colliding():
+			if collider is Enemy:
+				collider.hitpoints -= weapon_damage
+			var spark = sparks.instantiate()
+			add_child(spark)
+			spark.global_position = ray_cast_3d.get_collision_point()
